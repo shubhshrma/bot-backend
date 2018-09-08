@@ -17,8 +17,7 @@ var events = require('./routes/events');
 
 // var keys = require('./config');
 
-mongoose.connect('mongodb://root:humroothai123@ds249372.mlab.com:49372/bot-backend' ,{
-  useMongoClient: true});
+mongoose.connect('mongodb://root:humroothai123@ds249372.mlab.com:49372/bot-backend', { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 
