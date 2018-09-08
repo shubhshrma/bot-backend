@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <h2>Upload Assignment</h2>
+
+  <form action="/assignments/put/" method="POST">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+    </div>
+    <div class="form-group">
+      <label for="details">Details:</label>
+      <textarea class="form-control" rows="5" id="details" name="details"></textarea>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-3">
+          <label for="date">Date:</label>
+          <input type="date" class="form-control" id="date" name="date" value="2018-09-22" min="2018-01-01" max="2018-12-31" />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="branch">Select Branch:</label>
+        <select class="form-control" id="branch" name="branch">
+          <option>CSE</option>
+          <option>IT</option>
+          <option>ECE</option>
+          <option>EEE</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="branch">Select Semester:</label>
+        <select class="form-control" id="semester" name="semester">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="branch">Select Section:</label>
+        <select class="form-control" id="section" name="section">
+          <option>None</option>
+          <option>A</option>
+          <option>B</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

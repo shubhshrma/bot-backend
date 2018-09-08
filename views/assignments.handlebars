@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<p>To upload assignments, go to <a href="/assignments/put/">/assignments/put/</a>.</p>
+	{{#if assignments}}
+	<h2>All Assignments</h2>
+	{{#each assignments}}
+		<div style="border: 1px solid"  >
+			<p>Title:&nbsp;&nbsp;{{this.title}}</p>
+			<p>Details:&nbsp;&nbsp;{{this.details}}</p>
+			<p>Date:&nbsp;&nbsp;{{this.date}}</p>
+			<p>Other details:&nbsp;&nbsp;{{this.sem}} {{this.branch}} {{this.section}}</p>	
+
+		</div>
+	{{/each}}
+{{else}}
+	<h2>There are no assignments currently.</h2>
+{{/if}}
+</div>
