@@ -13,6 +13,8 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var assignments = require('./routes/assignments');
 var events = require('./routes/events');
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
 
 
 // var keys = require('./config');
@@ -28,6 +30,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout:'layout'}));
 app.set('view engine', 'handlebars');
+
+//Swagger use
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+//app.use('/api/v1', );
+
 
 // BodyParser Middleware
 app.use(bodyParser.json());

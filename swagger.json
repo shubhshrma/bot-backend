@@ -1,0 +1,49 @@
+{
+  "swagger": "2.0", 
+  "info": {
+    "version": "1.0.0", 
+    "description": "A simple bot to get info about college.", 
+    "title": "UIET-BOT"
+  }, 
+  "host": "localhost:3000",
+  "basePath": "/",
+  "paths": {
+    "/assignments/{branch}/{semester}/{section}": {
+      "get": {
+        "description": "Returns a list containing assignments { /assignments/(branch)/(section)/(sem) }", 
+        "parameters": [
+          {
+            "type": "string", 
+            "description": "Branch to be searched(acronym in capital)", 
+            "name": "branch", 
+            "in": "path"
+          }, 
+          {
+            "name": "semester", 
+            "type": "integer", 
+            "description": "Semester to be searched(number)", 
+            "in": "path"
+          }, 
+          {
+            "name": "section", 
+            "type": "char", 
+            "description": "Section to be searched(capital letter)", 
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "assignments are found",
+            "schema": {
+              "$ref": "#/definitions/Assignment"
+            }
+          }
+        }, 
+        "summary": "Gets some assignments"
+      }
+    }
+  }, 
+  "schemes": [
+    "http"
+  ]
+}

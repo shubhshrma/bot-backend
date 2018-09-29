@@ -5,11 +5,14 @@ var Assignment = require('../models/assignments');
 
 
 //Get homepage
-router.get('/', function(req, res) {
-	Assignment.getAllAssignments('IT', 7, 'B', (err, assignments) => {
+router.get('/:branch/:sem/:section', function(req, res) {
+	var branch = req.params.branch || 'IT';
+	var sem = req.params.sem || 7;
+	var section = req.params.section || 'B';
+	Assignment.getAllAssignments(branch, sem, section, (err, assignments) => {
 		if(err) throw err;
 		console.log(assignments);
-		res.render('assignments', {assignments: assignments});	
+		res.json(assignments);	
 	})
     
 });
@@ -18,9 +21,9 @@ router.get('/', function(req, res) {
 // 	res.render(results);
 // })
 
-router.get('/put', function(req, res){
-	res.render('assignments-post');
-});
+// router.get('/put', function(req, res){
+// 	res.render('assignments-post');
+// });
 
 router.post('/put', function(req, res){
 	console.log(req.body);
@@ -37,8 +40,7 @@ router.post('/put', function(req, res){
 		if(err) throw err;
 		console.log(assignment);
 	})
-	req.flash('success_msg', 'Your assignment is created.');
-	res.redirect('/assignments/put');
+	res.json({"success": true});
 });
 
 
