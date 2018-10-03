@@ -8,9 +8,9 @@
   "host": "localhost:3000",
   "basePath": "/",
   "paths": {
-    "/assignments/{branch}/{semester}/{section}": {
+    "/assignments/{branch}/{semester}/{section}?date={date}&boa={boa}": {
       "get": {
-        "description": "Returns a list containing assignments { /assignments/(branch)/(section)/(sem) }", 
+        "description": "Returns a list containing assignments", 
         "parameters": [
           {
             "type": "string", 
@@ -41,7 +41,48 @@
         }, 
         "summary": "Gets some assignments"
       }
+    },
+    "/exams/{branch}/{semester}?date={date}&boa={boa}": {
+      "get": {
+        "description": "Returns a list containing exams", 
+        "parameters": [
+          {
+            "type": "string", 
+            "description": "Branch to be searched(acronym in capital)", 
+            "name": "branch", 
+            "in": "path"
+          }, 
+          {
+            "name": "semester", 
+            "type": "integer", 
+            "description": "Semester to be searched(number)", 
+            "in": "path"
+          }, 
+          {
+            "name": "date", 
+            "type": "string", 
+            "description": "Date (yyyy-mm-dd)", 
+            "in": "query"
+          },
+          {
+            "name": "boa",
+            "type": "string",
+            "description": "before or after",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "exams are found",
+            "schema": {
+              "$ref": "#/definitions/Exam"
+            }
+          }
+        }, 
+        "summary": "Gets some exams"
+      }
     }
+
   }, 
   "schemes": [
     "http"

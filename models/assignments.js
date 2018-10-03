@@ -29,17 +29,11 @@ module.exports.putAssignment = function(newAssignment, callback) {
 }
 
 //All assignments according to branch, sem without date
-module.exports.getAllAssignments = function(branch, sem, section, callback) {
+module.exports.getAllAssignments = function(branch, sem, section, date, boa, callback) {
 
-	if(section) Assignment.find({ branch: branch, sem: sem, section:section }, callback);
-	else Assignment.find({ branch: branch, sem: sem }, callback);
-
-}
-
-//All assignments according to branch and sem before given date
-module.exports.getAssignmentsByDate = function(branch, sem, section, date, callback) {
-
-	if(section) Assignment.find({ branch: branch, sem: sem, section:section, date: {$lt: date} }, callback);
-	else Assignment.find({ branch: branch, sem: sem, date: {$lt: date} }, callback);
+	var isodate = new Date(date);
+	if(boa==='before') Assignment.find({ branch: branch, sem: sem, section:section, date: {$lte: isodate }}, callback);
+	else if(boa==='after') Assignment.find({ branch: branch, sem: sem, section:section, date: {$gte: isodate }}, callback);
 
 }
+

@@ -2,14 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 var Assignment = require('../models/assignments');
+ 
 
-
-//Get homepage
+//Get assignments by filter
 router.get('/:branch/:sem/:section', function(req, res) {
 	var branch = req.params.branch || 'IT';
 	var sem = req.params.sem || 7;
 	var section = req.params.section || 'B';
-	Assignment.getAllAssignments(branch, sem, section, (err, assignments) => {
+	var date = req.query.date;
+	var boa = req.query.boa;
+	//console.log(typeof date, typeof boa);
+	Assignment.getAllAssignments(branch, sem, section, date, boa, (err, assignments) => {
 		if(err) throw err;
 		console.log(assignments);
 		res.json(assignments);	

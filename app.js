@@ -12,7 +12,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
 var assignments = require('./routes/assignments');
-var events = require('./routes/events');
+var exams = require('./routes/exams');
 var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json');
 
@@ -70,7 +70,7 @@ app.use(function (req, res, next) {
 //Routes
 app.use('/', index);
 app.use('/assignments', assignments);
-// app.use('/events', events);
+app.use('/exams', exams);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
