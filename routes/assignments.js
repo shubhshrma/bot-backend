@@ -17,7 +17,6 @@ router.get('/:branch/:sem/:section', function(req, res) {
 		console.log(assignments);
 		res.json(assignments);	
 	})
-    
 });
 
 // router.get('/results', function(req, res){

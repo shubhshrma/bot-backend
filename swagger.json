@@ -81,7 +81,96 @@
         }, 
         "summary": "Gets some exams"
       }
+    },
+    "/users/register": {
+      "post": {
+        "description": "Enters a new user into the database after verifying that it doesn't already exist.", 
+        "parameters": [
+          {
+            "type": "string", 
+            "description": "username", 
+            "name": "username", 
+            "in": "body"
+          }, 
+          {
+            "name": "password", 
+            "type": "string", 
+            "description": "password", 
+            "in": "body"
+          },
+          {
+            "name": "name", 
+            "type": "string", 
+            "description": "name", 
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "new user created",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "username exists",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "internal server error(some required field empty probably)",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        
+        }, 
+        "summary": "Registers users"
+      }
+    },
+     "/users/login": {
+      "post": {
+        "description": "Returns a token for verifying the user on subsequent requests.", 
+        "parameters": [
+          {
+            "type": "string", 
+            "description": "username", 
+            "name": "username", 
+            "in": "body"
+          }, 
+          {
+            "name": "password", 
+            "type": "string", 
+            "description": "password", 
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Auth successful",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "401": {
+            "description": "Auth failed",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "internal server error",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        
+        }, 
+        "summary": "Login users"
+      }
     }
+
 
   }, 
   "schemes": [

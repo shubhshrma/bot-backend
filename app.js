@@ -13,6 +13,7 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var assignments = require('./routes/assignments');
 var exams = require('./routes/exams');
+var users = require('./routes/users');
 var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json');
 
@@ -51,26 +52,11 @@ app.use(session({
   resave: true
 }));
 
-// Passport init
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Connect Flash
-app.use(flash());
-
-// Global Vars
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});
-
 //Routes
 app.use('/', index);
 app.use('/assignments', assignments);
 app.use('/exams', exams);
+app.use('/users', users);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
