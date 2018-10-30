@@ -5,7 +5,7 @@
     "description": "A simple bot to get info about college.", 
     "title": "UIET-BOT"
   }, 
-  "host": "uiet-bot.glitch.me/",
+  "host": "uiet-bot.glitch.me",
   "basePath": "/",
   "paths": {
     "/assignments/{branch}/{semester}/{section}?date={date}&boa={boa}": {
@@ -29,6 +29,18 @@
             "type": "char", 
             "description": "Section to be searched(capital letter)", 
             "in": "path"
+          },
+          {
+            "name": "date", 
+            "type": "string", 
+            "description": "Date (yyyy-mm-dd)", 
+            "in": "query"
+          },
+          {
+            "name": "boa",
+            "type": "string",
+            "description": "before or after",
+            "in": "query"
           }
         ],
         "responses": {
