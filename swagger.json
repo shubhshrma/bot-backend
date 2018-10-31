@@ -54,6 +54,50 @@
         "summary": "Gets some assignments"
       }
     },
+    "/assignments/put": {
+      "post": {
+        "description": "Uploads an assignment", 
+        "parameters": [
+          {
+            "type": "string", 
+            "description": "Title of assignment", 
+            "name": "title", 
+            "in": "body"
+          },
+          {
+            "type": "string", 
+            "description": "Branch of assignment(acronym in capital)", 
+            "name": "branch", 
+            "in": "body"
+          },
+          {
+            "type": "string", 
+            "description": "Details of assignment", 
+            "name": "details", 
+            "in": "body"
+          }, 
+          {
+            "name": "semester", 
+            "type": "integer", 
+            "description": "Semester of assignment(number)", 
+            "in": "body"
+          }, 
+          {
+            "name": "section", 
+            "type": "char", 
+            "description": "Section of assignment(capital letter)", 
+            "in": "body"
+          },
+          {
+            "name": "date", 
+            "type": "string", 
+            "description": "Date (yyyy-mm-dd)", 
+            "in": "body"
+          }
+        ],
+        "summary": "Uploads assignments"
+      }
+    },
     "/exams/{branch}/{semester}?date={date}&boa={boa}": {
       "get": {
         "description": "Returns a list containing exams", 
@@ -92,6 +136,44 @@
           }
         }, 
         "summary": "Gets some exams"
+      }
+    },
+    "/exams/put": {
+      "post": {
+        "description": "Uploads an exam", 
+        "parameters": [
+          {
+            "type": "string", 
+            "description": "Title of exam", 
+            "name": "title", 
+            "in": "body"
+          },
+          {
+            "type": "string", 
+            "description": "Branch of exam(acronym in capital)", 
+            "name": "branch", 
+            "in": "body"
+          },
+          {
+            "name": "semester", 
+            "type": "integer", 
+            "description": "Semester of exam(number)", 
+            "in": "body"
+          }, 
+          {
+            "name": "subject", 
+            "type": "string", 
+            "description": "Subject of exam", 
+            "in": "body"
+          },
+          {
+            "name": "date", 
+            "type": "string", 
+            "description": "Date (yyyy-mm-dd)", 
+            "in": "body"
+          }
+        ],
+        "summary": "Uploads exams"
       }
     },
     "/users/register": {
