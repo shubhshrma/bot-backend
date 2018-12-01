@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Exam = require('../models/exams');
+var checkAuth = require('../middleware/check-auth');
 
 
 //Get exams by filter
@@ -20,7 +21,7 @@ router.get('/:branch/:sem', function(req, res) {
 });
 
 
-router.post('/put', function(req, res){
+router.post('/put', checkAuth, function(req, res){
 	console.log(req.body);
 	var newExam = new Exam({
 		title: req.body.title,

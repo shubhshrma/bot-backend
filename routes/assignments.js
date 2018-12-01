@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Assignment = require('../models/assignments');
- 
+var checkAuth = require('../middleware/check-auth');
 
 //Get assignments by filter
 router.get('/:branch/:sem/:section', function(req, res) {
@@ -19,15 +19,7 @@ router.get('/:branch/:sem/:section', function(req, res) {
 	})
 });
 
-// router.get('/results', function(req, res){
-// 	res.render(results);
-// })
-
-// router.get('/put', function(req, res){
-// 	res.render('assignments-post');
-// });
-
-router.post('/put', function(req, res){
+router.post('/put', checkAuth, function(req, res){
 	console.log(req.body);
 	var newAssignment = new Assignment({
 		title: req.body.title,
@@ -44,7 +36,5 @@ router.post('/put', function(req, res){
 	})
 	res.json({"success": true});
 });
-
-
 
 module.exports = router;
